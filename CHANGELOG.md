@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Updated COSMIC database API access to use the current endpoint
 - Fixed file parsing to handle input formats correctly
+- 4.1.1 is simply 4.1.0 but with the correct version string
 
 ### Removed
 
