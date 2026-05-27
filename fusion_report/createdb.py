@@ -37,11 +37,12 @@ class CreateDB:
         cosmic_path = os.path.abspath(params.cosmic) if params.cosmic else None
         mitelman_path = os.path.abspath(params.mitelman) if params.mitelman else None
         fusiongdb2_path = os.path.abspath(params.fusiongdb2) if params.fusiongdb2 else None
+        output_path = os.path.abspath(params.output)
 
-        if not os.path.exists(params.output):
-            os.makedirs(params.output, 0o755)
+        if not os.path.exists(output_path):
+            os.makedirs(output_path, 0o755)
 
-        tmp_dir = os.path.join(os.path.abspath(params.output), "tmp_dir")
+        tmp_dir = os.path.join(output_path, "tmp_dir")
         if not os.path.exists(tmp_dir):
             os.mkdir(tmp_dir)
         os.chdir(tmp_dir)
