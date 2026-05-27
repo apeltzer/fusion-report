@@ -1,5 +1,7 @@
 # Download resources
 
+> If you already have the database files locally, you can use [`fusion_report createdb`](createdb.md) to build databases without downloading.
+
 Currently the tool supports three different databases:
 
 * [FusionGDB2](https://compbio.uth.edu/FusionGDB2/tables)

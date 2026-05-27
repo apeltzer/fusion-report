@@ -1,6 +1,7 @@
 # Running the tool
 
 > Before running the tool make sure you have downloaded all the necessary resources!
+> You can either use [`fusion_report download`](download.md) or [`fusion_report createdb`](createdb.md) to set up the databases.
 
 ## Run all fusion detection tools
 
