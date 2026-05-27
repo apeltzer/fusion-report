@@ -65,7 +65,7 @@ class CreateDB:
 
         # Move db files and clean up
         self._clean()
-        self._timestamp(params.output)
+        self._timestamp(output_path)
         LOG.info("Database creation finished")
 
     @staticmethod
