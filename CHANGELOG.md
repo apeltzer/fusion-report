@@ -22,12 +22,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Removed unused `sync` command ([#69](https://github.com/Clinical-Genomics/fusion-report/issues/69))
 
-## [4.0.2]
-
-### Added
-
-- Added support for newer COSMIC API and download of COSMIC v104 data
-
 ## [4.0.0]
 
 ### Added
