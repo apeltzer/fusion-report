@@ -33,24 +33,29 @@ class CreateDB:
                 "Use --cosmic, --mitelman, and/or --fusiongdb2."
             )
 
+        # Resolve paths to absolute before changing directory
+        cosmic_path = os.path.abspath(params.cosmic) if params.cosmic else None
+        mitelman_path = os.path.abspath(params.mitelman) if params.mitelman else None
+        fusiongdb2_path = os.path.abspath(params.fusiongdb2) if params.fusiongdb2 else None
+
         if not os.path.exists(params.output):
             os.makedirs(params.output, 0o755)
 
-        tmp_dir = os.path.join(params.output, "tmp_dir")
+        tmp_dir = os.path.join(os.path.abspath(params.output), "tmp_dir")
         if not os.path.exists(tmp_dir):
             os.mkdir(tmp_dir)
         os.chdir(tmp_dir)
 
         return_err: List[str] = []
 
-        if params.cosmic:
-            self.build_cosmic(params.cosmic, return_err)
+        if cosmic_path:
+            self.build_cosmic(cosmic_path, return_err)
 
-        if params.mitelman:
-            self.build_mitelman(params.mitelman, return_err)
+        if mitelman_path:
+            self.build_mitelman(mitelman_path, return_err)
 
-        if params.fusiongdb2:
-            self.build_fusiongdb2(params.fusiongdb2, return_err)
+        if fusiongdb2_path:
+            self.build_fusiongdb2(fusiongdb2_path, return_err)
 
         if return_err:
             for err in return_err:
