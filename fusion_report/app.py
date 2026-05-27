@@ -25,7 +25,6 @@ from fusion_report.data.fusiongdb2 import FusionGDB2
 from fusion_report.data.mitelman import MitelmanDB
 from fusion_report.download import Download
 from fusion_report.settings import Settings
-from fusion_report.sync import Sync
 
 
 class App:
@@ -70,9 +69,6 @@ class App:
             elif params.command == "download":
                 Logger(__name__).info("Downloading resources...")
                 Download(params)
-            elif params.command == "sync":
-                Logger(__name__).info("Synchronizing databases...")
-                Sync(params)
             elif params.command == "createdb":
                 Logger(__name__).info("Creating databases from local files...")
                 CreateDB(params)

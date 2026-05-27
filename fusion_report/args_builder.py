@@ -43,7 +43,6 @@ class ArgsBuilder:
         """Build command-line arguments."""
         self.run_args(self.arguments["args"]["run"], self.arguments["weight"])
         self.download_args(self.arguments["args"]["download"])
-        self.sync_args(self.arguments["args"]["download"])
         self.createdb_args(self.arguments["args"]["createdb"])
 
     def run_args(self, args, weight) -> None:
@@ -122,14 +121,6 @@ class ArgsBuilder:
                 help=optional["help"],
                 action=optional.get("action", "store"),
             )
-
-        self._cosmic(args, download_parser)
-
-    def sync_args(self, args: Dict[str, Any]) -> None:
-        """Build sync command-line arguments."""
-        download_parser = self.command_parser.add_parser("sync", help="Synchronize databases")
-        for mandatory in args["mandatory"]:
-            download_parser.add_argument(mandatory["key"], help=mandatory["help"], type=str)
 
         self._cosmic(args, download_parser)
 

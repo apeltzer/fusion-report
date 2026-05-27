@@ -49,5 +49,4 @@ fusion_report run "<SAMPLE NAME>" /path/to/output /path/to/db/ \
 fusion_report --help
 fusion_report run --help
 fusion_report download --help
-fusion_report sync --help
 ```
