@@ -15,7 +15,7 @@ Provide at least one database file. Only the databases for which files are suppl
 
 ```bash
 fusion_report createdb /path/to/db \
-    --cosmic Cosmic_Fusion_v101_GRCh38.tsv.gz \
+    --cosmic <Cosmic_Fusion_vXXX_GRChYY.tsv.gz> \
     --mitelman mitelman_db.zip \
     --fusiongdb2 FusionGDB2_id.xlsx
 ```
@@ -24,7 +24,7 @@ fusion_report createdb /path/to/db \
 
 ```bash
 fusion_report createdb /path/to/db \
-    --cosmic Cosmic_Fusion_v101_GRCh38.tsv.gz
+    --cosmic <Cosmic_Fusion_vXXX_GRChYY.tsv.gz>
 ```
 
 ### Build Mitelman + FusionGDB2 (no COSMIC credentials needed)
@@ -55,7 +55,7 @@ fusion_report createdb /path/to/db \
 
 ## Output
 
-The command creates `.db` files and a `DB-timestamp.txt` in the output directory:
+The command creates `.db` files and a `DB-timestamp.txt` file in the output directory:
 
 ```
 /path/to/db/
