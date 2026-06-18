@@ -91,13 +91,13 @@ jobs:
         run: |
           mkdir -p raw_files
           wget -q "https://storage.googleapis.com/mitelman-data-files/prod/mitelman_db.zip" -O raw_files/mitelman_db.zip
-          wget -q "https://compbio.uth.edu/FusionGDB2/tables/FusionGDB2_id.xlsx" -O raw_files/FusionGDB2_id.xlsx
+          wget -q "https://compbio.uth.edu/FusionGDB/combined_tables/combinedFGDB2genes_genes_ID_04302024.txt" -O raw_files/combinedFGDB2genes_genes_ID_04302024.txt
 
       - name: Create databases from local files
         run: |
           fusion_report createdb ./db \
             --mitelman raw_files/mitelman_db.zip \
-            --fusiongdb2 raw_files/FusionGDB2_id.xlsx
+            --fusiongdb2 raw_files/combinedFGDB2genes_genes_ID_04302024.txt
 
       - name: Verify databases created
         run: |

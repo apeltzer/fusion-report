@@ -119,22 +119,23 @@ class CreateDB:
 
     @staticmethod
     def build_fusiongdb2(file_path: str, return_err: List[str]) -> None:
-        """Build FusionGDB2 database from an XLSX or pre-processed CSV file."""
+        """Build FusionGDB2 database from a TSV or pre-processed CSV file."""
         try:
             if not os.path.exists(file_path):
                 raise FileNotFoundError(f"FusionGDB2 file not found: {file_path}")
 
-            if file_path.endswith(".xlsx"):
-                LOG.info(f"Processing Excel file {file_path}")
-                df = pd.read_excel(file_path, engine="openpyxl")
-                df["fusion"] = df["5'-gene (text format)"] + "--" + df["3'-gene (text format)"]
+            if file_path.endswith(".txt"):
+                LOG.info(f"Processing FusionGDB2 file {file_path}")
+                # Headerless 6-column TSV: col2 = 5'-gene, col4 = 3'-gene (0-indexed)
+                df = pd.read_csv(file_path, sep="\t", header=None)
+                df["fusion"] = df[2] + "--" + df[4]
                 csv_file = "fusionGDB2.csv"
                 df["fusion"].to_csv(csv_file, header=False, index=False, sep=",", encoding="utf-8")
             elif file_path.endswith(".csv"):
                 csv_file = file_path
             else:
                 raise ValueError(
-                    f"Unsupported FusionGDB2 file format: {file_path}. " "Expected .xlsx or .csv"
+                    f"Unsupported FusionGDB2 file format: {file_path}. " "Expected .txt or .csv"
                 )
 
             db = FusionGDB2(".")

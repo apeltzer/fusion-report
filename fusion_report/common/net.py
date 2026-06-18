@@ -222,8 +222,9 @@ class Net:
             url: str = f'{Settings.FUSIONGDB2["HOSTNAME"]}/{Settings.FUSIONGDB2["FILE"]}'
             Net.get_large_file(url, no_ssl)
             file: str = f'{Settings.FUSIONGDB2["FILE"]}'
-            df = pd.read_excel(file, engine="openpyxl")
-            df["fusion"] = df["5'-gene (text format)"] + "--" + df["3'-gene (text format)"]
+            # Headerless 6-column TSV: col2 = 5'-gene, col4 = 3'-gene (0-indexed)
+            df = pd.read_csv(file, sep="\t", header=None)
+            df["fusion"] = df[2] + "--" + df[4]
             file_csv = "fusionGDB2.csv"
             df["fusion"].to_csv(file_csv, header=False, index=False, sep=",", encoding="utf-8")
 
