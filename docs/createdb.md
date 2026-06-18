@@ -17,7 +17,7 @@ Provide at least one database file. Only the databases for which files are suppl
 fusion_report createdb /path/to/db \
     --cosmic <Cosmic_Fusion_vXXX_GRChYY.tsv.gz> \
     --mitelman mitelman_db.zip \
-    --fusiongdb2 FusionGDB2_id.xlsx
+    --fusiongdb2 combinedFGDB2genes_genes_ID_04302024.txt
 ```
 
 ### Build only COSMIC
@@ -32,7 +32,7 @@ fusion_report createdb /path/to/db \
 ```bash
 fusion_report createdb /path/to/db \
     --mitelman mitelman_db.zip \
-    --fusiongdb2 FusionGDB2_id.xlsx
+    --fusiongdb2 combinedFGDB2genes_genes_ID_04302024.txt
 ```
 
 ## Supported file formats
@@ -41,7 +41,7 @@ fusion_report createdb /path/to/db \
 |----------|-----------------|-------|
 | **COSMIC** | `.tsv.gz` or `.tsv` | COSMIC Fusion Export file (gzipped or plain). Download from [COSMIC](https://cancer.sanger.ac.uk/cosmic/download) or the respective Qiagen (commercial case) sources |
 | **Mitelman** | `.zip` or extracted `MBCA.TXT.DATA` | Mitelman database archive. Download from [Mitelman](https://mitfrednlm.nih.gov). |
-| **FusionGDB2** | `.xlsx` or `.csv` | FusionGDB2 Excel export or pre-processed CSV with one fusion per line (`GENE1--GENE2`). Download from [FusionGDB2](https://compbio.uth.edu/FusionGDB2/tables). |
+| **FusionGDB2** | `.txt` or `.csv` | FusionGDB2 gene-ID table (headerless 6-column TSV) or a pre-processed CSV with one fusion per line (`GENE1--GENE2`). Download from [FusionGDB2](https://compbio.uth.edu/FusionGDB/combined_tables/combinedFGDB2genes_genes_ID_04302024.txt). |
 
 ## Comparison: `download` vs `createdb`
 
