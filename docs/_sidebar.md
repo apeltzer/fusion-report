@@ -1,6 +1,6 @@
 * Getting started
 
-* [Quick start](README.md)
+* [Quick start](/)
 * [Download resources](download.md)
 * [Create databases from local files](createdb.md)
 * [Running the tool](usage.md)

@@ -18,6 +18,28 @@ fusion_report run "<SAMPLE NAME>" /path/to/output /path/to/db/ \
   --allow-multiple-gene-symbols
 ```
 
+## Run with Docker
+
+If you prefer not to install dependencies locally, run the same commands via Docker:
+
+```bash
+# Build image locally
+docker build -t fusion-report:latest .
+
+# Run report with mounted directories
+docker run --rm \
+  -u "$(id -u):$(id -g)" \
+  -w /db \
+  -v /path/to/output:/output \
+  -v /path/to/db:/db \
+  -v /path/to/input:/input \
+  fusion-report:latest run "<SAMPLE NAME>" /output /db \
+  --arriba /input/arriba.tsv \
+  --ericscript /input/ericscript.tsv \
+  --starfusion /input/starfusion.tsv \
+  --fusioncatcher /input/fusioncatcher.txt
+```
+
 ## Multiple gene symbols
 
 In case fusion gene symbol can't be uniquely determined some tools provide possible list of fusions. Each fusion tool handles this differently.
@@ -32,8 +54,8 @@ Dummy fusion detected by Squid: `15	34347968	34348134	19	15254151	15254264	.	9	-
 
 ## Set a custom weight for tool
 
-Each tool has a predefined weight when estimating the Fusion Indication Index of a fusion. On default all tools have an equal weight
-`(100 / NUMBER_OF_RUNNING_TOOLS)`. To change the weights follow the steps below:
+Each tool has a predefined weight when estimating the Fusion Indication Index of a fusion. By default, all tools have an equal weight
+`(100 / NUMBER_OF_RUNNING_TOOLS)`. To change the weights, follow the steps below:
 
 ```bash
 fusion_report run "<SAMPLE NAME>" /path/to/output /path/to/db/ \
@@ -49,4 +71,5 @@ fusion_report run "<SAMPLE NAME>" /path/to/output /path/to/db/ \
 fusion_report --help
 fusion_report run --help
 fusion_report download --help
+fusion_report createdb --help
 ```

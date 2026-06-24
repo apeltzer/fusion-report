@@ -1,6 +1,17 @@
+"""Package build configuration for fusion-report."""
+
 from setuptools import find_packages, setup
 
-PACKAGE_DATA = {"fusion_report": ["data/schema/*.sql" "arguments.json", "templates/*/*"]}
+PACKAGE_DATA = {
+    "fusion_report": [
+        "arguments.json",
+        "data/hgnc/*.gz",
+        "data/schema/*.sql",
+        "templates/*",
+        "templates/*/*",
+        "templates/*/*/*",
+    ]
+}
 
 with open("README.md") as f:
     README = f.read()
@@ -10,6 +21,7 @@ with open("requirements.txt") as f:
 
 setup(
     name="fusion-report",
+    version="4.1.2",
     python_requires=">=3.12",
     description="Tool for parsing outputs from fusion detection tools.",
     long_description=README,

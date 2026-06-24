@@ -35,6 +35,23 @@ fusion_report createdb /path/to/db \
     --fusiongdb2 combinedFGDB2genes_genes_ID_04302024.txt
 ```
 
+## Create databases with Docker
+
+```bash
+# Build image locally
+docker build -t fusion-report:latest .
+
+# Build DB files from mounted local resources
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -w /db \
+    -v /path/to/db:/db \
+    -v /path/to/raw_files:/raw \
+    fusion-report:latest createdb /db \
+    --mitelman /raw/mitelman_db.zip \
+    --fusiongdb2 /raw/combinedFGDB2genes_genes_ID_04302024.txt
+```
+
 ## Supported file formats
 
 | Database | Accepted formats | Notes |

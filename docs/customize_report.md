@@ -11,6 +11,8 @@ institution:
   url: 'https://www.scilifelab.se'
 date_format: '%Y-%m-%d'
 assets:
-  css: 'custom.css'
-  js: 'custom.js'
+  css:
+    - 'custom.css'
+  js:
+    - 'custom.js'
 ```

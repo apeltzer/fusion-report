@@ -1,16 +1,43 @@
-.vscode
-db/**/*.db
+# Editor and OS files
+.vscode/
+.idea/
+.DS_Store
+
+# Python bytecode and caches
+__pycache__/
+*__pycache__*
+*.py[cod]
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+
+# Test and lint caches
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+
+# Build artifacts
 build/
 dist/
-*.egg-info
-*__pycache__*
-tests/test_data_real
-.mypy_cache/*
-NOTES.md
-.idea
-tests/sss
+*.egg-info/
+*.whl
+
+# Coverage artifacts
+.coverage
+htmlcov/
+
+# Runtime / local artifacts
 *.log
-.tox/
-.DS_Store
+db/**/*.db
+db/DB-timestamp.txt
+
+# Project-specific local files
+tests/test_data_real
+tests/sss
+NOTES.md
 testfusionreport.sh
 thisismydb/

@@ -1,0 +1,39 @@
+# VCS and editor metadata
+.git
+.gitignore
+.github
+.vscode
+.idea
+
+# Python cache and virtual environments
+__pycache__/
+**/__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg-info/
+.eggs/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.tox/
+.venv/
+venv/
+.coverage
+htmlcov/
+
+# Build artifacts
+build/
+dist/
+*.whl
+
+# Project files not needed to build/run the package image
+docs/
+tests/
+db/
+
+# Local/temporary files
+.DS_Store
+*.log
+*.tmp
