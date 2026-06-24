@@ -1,5 +1,6 @@
 """Parent class of Page"""
 
+import re
 from typing import Any, Dict
 
 from fusion_report.common.fusion_manager import FusionManager
@@ -52,12 +53,11 @@ class BasePage:
         Returns:
             str: filename of the fusion
         """
-        for char in ["/", "\\", "--", "[", "]", " ", ":"]:
-            if char in fusion:
-                fusion = fusion.replace(char, "_")
-
-        # Collapse multiple consecutive underscores
-        import re
+        # Keep only URL/filesystem-safe filename characters.
+        # This avoids broken local file links when page titles include
+        # reserved URL characters like '#', '?', or '%'.
+        fusion = fusion.replace("--", "_")
+        fusion = re.sub(r"[^A-Za-z0-9._-]+", "_", fusion)
         fusion = re.sub(r"_+", "_", fusion).strip("_")
 
         return f"{fusion}.html"

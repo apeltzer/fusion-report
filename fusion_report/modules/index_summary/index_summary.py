@@ -1,5 +1,6 @@
 """Index summary module for dashboard-level report content."""
 
+import re
 from typing import Any, Dict, List
 
 from fusion_report.modules.base_module import BaseModule
@@ -7,6 +8,18 @@ from fusion_report.modules.base_module import BaseModule
 
 class CustomModule(BaseModule):
     """Build aggregate dashboard metrics and fusion tables for the index page."""
+
+    @staticmethod
+    def _safe_page_filename(title: str) -> str:
+        """Build a URL-safe HTML filename from a page title.
+
+        Mirrors the report page filename normalization so index links always
+        match rendered fusion page files.
+        """
+        normalized = title.replace("--", "_")
+        normalized = re.sub(r"[^A-Za-z0-9._-]+", "_", normalized)
+        normalized = re.sub(r"_+", "_", normalized).strip("_")
+        return f"{normalized}.html"
 
     def known_vs_unknown(self) -> List[List[Any]]:
         """Returns list of number of known  and unknown fusions.
@@ -67,6 +80,7 @@ class CustomModule(BaseModule):
             if filter_flag:
                 row = {
                     "fusion": fusion.name,
+                    "fusion_file": self._safe_page_filename(fusion.page_title),
                     "found_db": fusion.dbs,
                     "tools_hits": len(fusion.tools),
                     "score": f"{fusion.score:.3}",
@@ -76,6 +90,7 @@ class CustomModule(BaseModule):
             if not filter_flag and len(fusion.tools) >= self.params["tool_cutoff"]:
                 row = {
                     "fusion": fusion.name,
+                    "fusion_file": self._safe_page_filename(fusion.page_title),
                     "found_db": fusion.dbs,
                     "tools_hits": len(fusion.tools),
                     "score": f"{fusion.score:.3}",

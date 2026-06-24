@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed version mismatch in `docs/download.md` COSMIC manual commands (aligned all examples to v101 to match `Settings.COSMIC["VERSION"]`).
 - Fixed inverted SSL verify flag in `Net.get_large_file`: `no_ssl=True` now correctly disables certificate verification (`verify=not no_ssl`).
 - Fixed containerized `run` resilience so HGNC loading now degrades gracefully when live download fails due to TLS/CA issues by falling back to cached or bundled HGNC resources.
+- Fixed local report navigation for fusion detail pages by sanitizing auto-generated filenames to remove URL-reserved characters (for example `#`) and by updating index-table links to target the exact rendered page filename (including breakpoint-aware suffixes).
 
 ### Changed
 
